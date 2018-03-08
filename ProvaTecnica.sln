@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProvaTecnica.UI", "ProvaTecnica\ProvaTecnica.UI.csproj", "{A3212816-9C8A-4603-8B69-7ECB73357DEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProvaTecnica.Model", "ProvaTecnica.Model\ProvaTecnica.Model.csproj", "{98380811-63CF-4787-A843-4DEE567BAA33}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A3212816-9C8A-4603-8B69-7ECB73357DEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3212816-9C8A-4603-8B69-7ECB73357DEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3212816-9C8A-4603-8B69-7ECB73357DEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3212816-9C8A-4603-8B69-7ECB73357DEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98380811-63CF-4787-A843-4DEE567BAA33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98380811-63CF-4787-A843-4DEE567BAA33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98380811-63CF-4787-A843-4DEE567BAA33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98380811-63CF-4787-A843-4DEE567BAA33}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

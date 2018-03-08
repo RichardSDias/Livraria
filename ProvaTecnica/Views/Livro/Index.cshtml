@@ -1,0 +1,136 @@
+﻿@model IEnumerable<ProvaTecnica.Model.LivroModel>
+@{
+    ViewBag.Title = "Livros disponíveis";
+}
+
+<h2>Livros dispon&iacute;veis</h2>
+
+<div class="row">
+    <div class="col-xs-12 text-right">
+        <a href="@Url.Action("Incluir", "Livro")" title="Incluir um novo livro" class="btn btn-xs btn-primary">
+            <i class="glyphicon glyphicon-plus"></i> Incluir
+        </a>
+    </div>
+    <div class="col-xs-12">
+        @using (Html.BeginForm("Index", "Livro", FormMethod.Get))
+        {
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input name="nome" id="nome" type="text" class="form-control" value="@ViewBag.Nome" />
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="Autor">Autor</label>
+                        <input name="autor" id="autor" type="text" class="form-control" value="@ViewBag.Autor" />
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="isbn">ISBN</label>
+                        <input name="isbn" id="isbn" type="text" class="form-control" value="@ViewBag.ISBN" />
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="localizacao">Localiza&ccedil;&atilde;o</label>
+                        <input name="localizacao" id="localizacao" type="text" class="form-control" value="@ViewBag.Localizacao" />
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="quantidadMinima">Qtd. M&iacute;nima</label>
+                        <input name="quantidadeMinima" id="quantidadMinima" type="number" class="form-control" value="@ViewBag.QuantidadeMinima" />
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="quantidadeMaxima">Qtd. M&aacute;xima</label>
+                        <input name="quantidadeMaxima" id="quantidadeMaxima" type="text" class="form-control" value="@ViewBag.QuantidadeMaxima" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <button type="submit" class="btn btn-xs btn-primary" title="Filtrar livros">
+                        <span class="glyphicon glyphicon-filter"></span> Filtrar
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-xs-12">
+        <div class="table-responsive">
+            <table class="table table-hover table-striped table-condensed">
+                <thead>
+                    <tr>
+                        <th>Livro</th>
+                        <th>ISBN</th>
+                        <th>Autor</th>
+                        <th class="text-center">Quantidade</th>
+                        <th>Localiza&ccedil;&atilde;o</th>
+                        <th class="text-right">A&ccedil;&otilde;es</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model?.Count() > 0)
+                    {
+                        foreach (var livro in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @livro.Nome
+                                </td>
+                                <td>
+                                    @livro.ISBN
+                                </td>
+                                <td>
+                                    @livro.NomeAutor
+                                </td>
+                                <td class="text-center">
+                                    @livro.Quantidade
+                                </td>
+                                <td>
+                                    @livro.Localizacao
+                                </td>
+                                <td class="text-right">
+                                    <div class="btn-group btn-group-xs">
+                                        <a href="@Url.Action("Editar", "Livro", new { id = livro.Id})" class="btn btn-warning" title="Editar este livro">
+                                            <span class="glyphicon glyphicon-edit"></span>
+                                        </a>
+                                        <button type="button" data-target="#form-@livro.Id" class="btn btn-danger btn-remover" title="Remover este livro">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
+                                        @using (Html.BeginForm("Excluir", "Livro", FormMethod.Post, new { id = "form-" + livro.Id }))
+                                        {
+                                            <input type="hidden" value="@livro.Id" name="id" />
+                                        }
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $('.btn-remover').on('click', function () {
+            var confirma = confirm('Voce deseja realmente remover este livro?');
+
+            if (confirma) {
+                var idForm = $(this).data('target');
+
+                $(idForm).trigger('submit');
+            }
+        });
+    </script>
+}
